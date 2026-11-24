@@ -6,4 +6,5 @@ for j in $(find / -name '*sources*.jar' \( -path '*loom*' -o -path '*minecraft*'
 FILES=$(find "$D" \( -name 'ShareToLanScreen.java' -o -name 'WorldOptionsScreen.java' -o -name 'MultiplayerOptionsScreen.java' \))
 echo "== Pantallas =="; echo "$FILES"
 for f in $FILES; do echo; echo "===== $f ====="; cat "$f"; done
+for f in $(find "$D" -name 'IntegratedServer.java'); do echo; echo "===== $f ====="; grep -nE 'AllowCommands|commandsAllowed|isHardcore|OtherPlayers|isPublished|updatePermission' -B1 -A8 "$f"; done
 echo; echo "== selectWorld.allowCommands =="; grep -rn 'selectWorld.allowCommands' "$D" | head
