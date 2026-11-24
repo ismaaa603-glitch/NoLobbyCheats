@@ -1,0 +1,28 @@
+{
+	"schemaVersion": 1,
+	"id": "nolobbycheats",
+	"version": "${version}",
+	"name": "No Lobby Cheats",
+	"description": "Prevents enabling commands via Open to LAN in worlds with commands disabled on creation.",
+	"authors": [
+		"Yibo"
+	],
+	"license": "CC0-1.0",
+	"icon": "assets/nolobbycheats/icon.png",
+	"environment": "client",
+	"entrypoints": {
+		"client": []
+	},
+	"mixins": [
+		{
+			"config": "nolobbycheats.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.19.2",
+		"fabric-api": "*",
+		"minecraft": ">=26.2",
+		"java": ">=25"
+	}
+}

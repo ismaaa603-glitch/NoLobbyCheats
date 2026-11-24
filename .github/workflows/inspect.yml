@@ -1,0 +1,20 @@
+name: inspect-26.2
+on: [push, workflow_dispatch]
+jobs:
+  inspect:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-java@v5
+        with:
+          java-version: '25'
+          distribution: 'microsoft'
+      - run: chmod +x ./gradlew
+      - name: genSources
+        run: ./gradlew genSources --no-daemon
+      - name: verify names
+        run: ./verify-26.2.sh | tee inspect.txt
+      - uses: actions/upload-artifact@v7
+        with:
+          name: inspect
+          path: inspect.txt
